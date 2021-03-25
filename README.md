@@ -1,5 +1,7 @@
 # admin-dashboard
 
+## Example Admin Dashboard using Vue 2 and Boostrap
+
 ## Project setup
 ```
 npm install
