@@ -13,7 +13,8 @@ export const routes =
                     component: () => import('@/views/Users.vue'),
                     meta: {
                         displayName: "Users",
-                        icon: "",
+                        icon: "person-fill",
+                        iconVariant: "primary",
                         includeInSideNav: true,
                         roles: 'admin'
                     }    
@@ -35,7 +36,8 @@ export const routes =
                     component: () => import('@/views/Sections.vue'),
                     meta: {
                         displayName: "Sections",
-                        icon: "",
+                        icon: "exclamation-triangle",
+                        iconVariant: "primary",
                         includeInSideNav: true,
                         roles: 'admin'
                     }
@@ -57,18 +59,10 @@ export const routes =
                     meta: {
                         displayName: "Global Settings",
                         includeInSideNav: true,
+                        icon: "gear-fill",
+                        iconVariant: "success",
                         roles: 'admin'    
                     }
-                },
-                {
-                    path: "communicator",
-                    component: editReport,
-                    name: 'commsettings',
-                    meta: {
-                        displayName: "Comm Settings",
-                        includeInSideNav: true,
-                        roles: 'admin'    
-                    }
-                }]
+                }   ]
         }
     ]

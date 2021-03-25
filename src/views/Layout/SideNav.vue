@@ -8,7 +8,9 @@
             <side-nav-item v-for="route in userRoutes" 
                 :key="route.name"
                 :routeName="route.name" 
-                :displayName="route.meta.displayName"></side-nav-item>
+                :displayName="route.meta.displayName"
+                :icon="route.meta.icon"
+                :iconVariant="route.meta.iconVariant"></side-nav-item>
         </ul>
 </div>
 </template>
@@ -32,7 +34,8 @@ export default {
 .sidebar-container{
     .sidebar-header{
         color: #fff;
-        height: 35px;
+        height: 56px;
+        line-height: 56px;
     }   
 }
 </style>

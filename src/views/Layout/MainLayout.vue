@@ -46,11 +46,12 @@ export default {
             //transition-property: border-color, background-color, color
         }
 
-        .nav-link{  
+        .nav-link {  
             height: 56px;
             line-height: 56px;
             font-size: 14px;
             padding: 0 20px;
+            text-align: left;
 
             a {color: rgb(191, 203, 217);}
         }
