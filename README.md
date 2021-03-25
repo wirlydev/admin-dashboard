@@ -1,4 +1,4 @@
-# pto-admin
+# admin-dashboard
 
 ## Project setup
 ```
