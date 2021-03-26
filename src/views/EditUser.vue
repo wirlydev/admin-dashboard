@@ -1,11 +1,17 @@
 <template>
-    <div>
-        <h2>Edit User</h2>
+  <div>
+    <router-link :to="{ name: 'users' }" class="back-link">
+      <b-icon
+        icon="chevron-left"
+        :variant="iconVariant"
+        class="back-icon"
+      ></b-icon>
+    </router-link>
+
+    <h2>Edit User</h2>
+
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group
-        label="First Name:"
-        label-for="firstName"
-      >
+      <b-form-group label="First Name:" label-for="firstName">
         <b-form-input
           id="firstName"
           v-model="user.firstName"
@@ -15,10 +21,7 @@
         ></b-form-input>
       </b-form-group>
 
- <b-form-group
-        label="Last Name:"
-        label-for="lastName"
-      >
+      <b-form-group label="Last Name:" label-for="lastName">
         <b-form-input
           id="lastName"
           v-model="user.lastName"
@@ -28,10 +31,7 @@
         ></b-form-input>
       </b-form-group>
 
-<b-form-group
-        label="Email:"
-        label-for="email"
-      >
+      <b-form-group label="Email:" label-for="email">
         <b-form-input
           id="email"
           v-model="user.email"
@@ -41,7 +41,7 @@
         ></b-form-input>
       </b-form-group>
 
-    <b-form-group
+      <b-form-group
         label="New Password (Only enter a new password if you want to change the user's existing password):"
         label-for="newPassword"
       >
@@ -54,25 +54,13 @@
         ></b-form-input>
       </b-form-group>
 
-    <b-form-group
-        label="Role:"
-        label-for="role"
-      >
-
-      <b-form-select id="role" 
-        v-model="user.role" 
-        :options="roles"
-        required>
+      <b-form-group label="Role:" label-for="role">
+        <b-form-select id="role" v-model="user.role" :options="roles" required>
         </b-form-select>
       </b-form-group>
 
-
- <b-form-group
-        label="Territory:"
-        label-for="territory"
-      >
-
-      <b-form-input
+      <b-form-group label="Territory:" label-for="territory">
+        <b-form-input
           id="territory"
           v-model="user.territory"
           type="text"
@@ -80,47 +68,42 @@
         ></b-form-input>
       </b-form-group>
 
-
-    <b-form-group
-         label="External Id:"
-        label-for="externalId"
-      >
-
-    <b-form-input
+      <b-form-group label="External Id:" label-for="externalId">
+        <b-form-input
           id="externalId"
           v-model="user.externalId"
           type="text"
           placeholder="External Id"
         ></b-form-input>
-
-     </b-form-group>
-
-
+      </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
-    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        data() {
-      return {
-        user: {
-                id: 1, 
-                firstName: "John",
-                lastName: "Smith",
-                name: "John Smith",
-                email: "john.smith@example.com",
-                roles: "admin,user"
-            },
-        show: true,
-        roles: ['Admin', 'Member']
-      }
-    }
-    }
+export default {
+  data() {
+    return {
+      user: {
+        id: 1,
+        firstName: "John",
+        lastName: "Smith",
+        name: "John Smith",
+        email: "john.smith@example.com",
+        roles: "admin,user",
+      },
+      show: true,
+      roles: ["Admin", "Member"],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
+h2 {
+  display: inline-block;
+  font-size: 2rem;
+}
 </style>
