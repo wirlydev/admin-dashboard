@@ -21,6 +21,7 @@ export default {
 
 <style lang="scss">
 body {
+    
 }
 
 .wrapper {

@@ -1,4 +1,4 @@
-export const routes = [
+export const routes = [ 
   {
     path: "/",
     name: "home",
@@ -63,4 +63,9 @@ export const routes = [
       },
     ],
   },
+  {
+    path: '/login', 
+    name : 'login',
+    component : () => import('@/views/Login.vue')
+  }
 ];
