@@ -4,6 +4,7 @@
       <side-nav />
     </div>
     <div class="content-container">
+      <baseDropdown/>  
       <router-view />
     </div>
   </div>
@@ -11,8 +12,10 @@
 
 <script>
 import sideNav from "./SideNav.vue";
+import baseDropdown from  "../../components/TheUserDropdown.vue"
+
 export default {
-  components: { sideNav },
+  components: { sideNav, baseDropdown },
   setup() {
     return {};
   },
@@ -20,10 +23,6 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-    
-}
-
 .wrapper {
   display: flex;
   height: 100vh;
@@ -68,4 +67,19 @@ body {
 .back-link {
   font-size: 2.5rem;
 }
+
+.user-config-button{
+  display:flex; 
+  justify-content:right; 
+  padding-right: 15px;
+}
+
+.user-config-button i{
+  font-size: 25px;
+}
+
+.user-config-button:hover{
+  cursor: pointer;
+}
+
 </style>

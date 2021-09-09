@@ -97,7 +97,7 @@ export default {
       show: true,
       roles: ["Admin", "Member"],
     };
-  },
+  }
 };
 </script>
 

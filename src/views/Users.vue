@@ -18,43 +18,6 @@
 export default {
     data: function(){
         return {
-            users: [{
-                id: 1, 
-                name: "John Smith",
-                email: "john.smith@example.com",
-                roles: "admin,user"
-            },
-            {
-                id: 2, 
-                name: "John Smith",
-                email: "john.smith@example.com",
-                roles: "admin,user"
-            },
-            {
-                id: 3, 
-                name: "John Smith",
-                email: "john.smith@example.com",
-                roles: "admin,user"
-            },
-            {
-                id: 4, 
-                name: "John Smith",
-                email: "john.smith@example.com",
-                roles: "admin,user"
-            },
-            {
-                id: 4, 
-                name: "John Smith",
-                email: "john.smith@example.com",
-                roles: "admin,user"
-            },
-            {
-                id: 6, 
-                name: "Pat Smith",
-                email: "john.smith@example.com",
-                roles: "admin,user"
-            },
-            ],
             fields: ['id', 'name', 'email', 'roles', 'Actions'],
             searchText: ""
         }
@@ -63,19 +26,24 @@ export default {
         filteredUsers: function(){
             if(this.searchText.length < 3)
             {
-               return this.users;     
+               return this.$store.state.userManagement.users;     
             }
             else{
-                return this.users.filter(x=> x.name.includes(this.searchText) || x.email.includes(this.searchText));
+                return this.$store.state.userManagement.users.filter(x=> x.name.includes(this.searchText) || x.email.includes(this.searchText));
             }
         }
     },
 
     methods: {
-        
+        getUsers(){
+            this.$store.dispatch("userManagement/getUsers");
+        }
     },
     setup () {
         return {}
+    },
+    created: function(){
+        this.getUsers();
     }
 }
 </script>

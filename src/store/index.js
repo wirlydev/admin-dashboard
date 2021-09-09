@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
 
@@ -16,8 +17,19 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   return modules
 }, {})
 
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  reducer: (state) => ({
+      user: {
+        token: state.user.token
+      }
+  })
+})
+
 const store = new Vuex.Store({
-  modules
+  modules,
+  plugins: [vuexLocal.plugin]
 })
 
 export default store

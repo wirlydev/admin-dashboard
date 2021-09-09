@@ -41,9 +41,7 @@
           .then(response => {
               if(response.data.success){
                 this.$router.push({name: 'home'});
-
               }
-              alert(JSON.stringify(response))
         });
       }
     }

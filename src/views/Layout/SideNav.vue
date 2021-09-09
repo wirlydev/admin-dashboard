@@ -1,7 +1,6 @@
 <template>
     <div class="sidebar-container">            
         <ul class="nav flex-column">
-            <i class="bi bi-app"></i>
             <li>
                 <div class="sidebar-header">Dashboard</div>
             </li>

@@ -1,32 +1,44 @@
-import appSettings from '../../appSettings.js'
-import axios from 'axios';
+import appSettings from "../../appSettings.js";
+import axios from "axios";
+import router from "../../router"
 
 export default {
-    namespaced : true, 
-    state: {
-        token: null
+  namespaced: true,
+  state: {
+    token: null,
+  },
+  getters: {
+    isAuthenticated(state) {
+      return state.token !== null;
     },
-    getters: {
-        isAuthenticated(state){
-            return state.token !== null && state.token !== ''
-        }
-    }, 
-    mutations: {
-        setToken(state, tokenValue){
-            state.token = tokenValue;
-        }
-    },
-    actions: {
-        login({ commit }, credentials){
-            return axios.post(`${appSettings.apiBaseUrl}/login`, 
-                credentials,
-                {headers: {'access-token': appSettings.apiKey}})
-            .then(response => {
-                if(response.data.success && response.data.token !== null && response.data.token !== ''){
-                    commit('setToken', response.data.token);
-                    return response;
-                }
-            })        
-        } 
+  },
+  mutations: {
+    updateToken: (state, payload) => {
+        state.token = payload
     }
-}
+  },
+  actions: {
+    login({ commit }, credentials) {
+      return axios
+        .post(`${appSettings.apiBaseUrl}/login`, credentials, {
+          headers: { "access-token": appSettings.apiKey },
+        })
+        .then((response) => {
+          if (
+            response.data.success &&
+            response.data.token !== null &&
+            response.data.token !== ""
+          ) {
+                commit("updateToken", response.data.token)  
+          }
+          return response;
+        });
+    },
+    logout({ commit }) {
+      return new Promise((resolve, reject) => {
+        commit("updateToken", null)
+        router.push({name: 'login'});
+      });
+    },
+  },
+};

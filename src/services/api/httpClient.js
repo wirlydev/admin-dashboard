@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { store } from '@/store';
+import store from '@/store';
+import appSettings from "../../appSettings.js";
 
-export const httpClient = {
-    client() {
-        const apiClient = axios.create({
-            baseURL: 'https://localhost:44391/',
+export default {
+    client : function(){
+        var apiClient = axios.create({
+            baseURL: appSettings.apiBaseUrl,
             timeout: 1000,
-            headers: {'X-Custom-Header': 'foobar'}
+            headers: {'Authorization': `Bearer ${store.state.user.token}`}
         });
-        
 
         apiClient.interceptors.response.use(response => { return response },
             error => {
@@ -32,5 +32,5 @@ export const httpClient = {
                 }
             });
         return apiClient;
-    }
+    } 
 }
